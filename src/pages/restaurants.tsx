@@ -1,10 +1,10 @@
-import FormRestaurants from "../components/FormRestaurants"
+import { CardRestaurant } from "../components/cardRestaurants"
 
 
 export const Restaurant = () => {
   return (
     <div>
-      <FormRestaurants/>
+      <CardRestaurant/>
     </div>
   )
 }

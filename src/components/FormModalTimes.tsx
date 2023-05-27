@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Flex,
   FormControl,
   FormLabel,
   HStack,
@@ -11,11 +10,10 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
   useDisclosure,
-  useColorModeValue,
-Divider 
+  Divider,
+  Select,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
@@ -24,15 +22,22 @@ export function ModalTimes() {
 
   const initialRef = useRef(null);
   const finalRef = useRef(null);
-  const daysWeeks = ["Segunda-Feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira",
-  "Sabádo", "Domingo"]
+  const daysWeeks = [
+    "Segunda-Feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sabádo",
+    "Domingo",
+  ];
   return (
     <>
-      <Button color={"#f4f4f4"} onClick={onOpen}>
-        Formulário
+      <Button onClick={onOpen}>
+        clique aqui
       </Button>
       <Modal
-        size={'6xl'}
+        size={"6xl"}
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
@@ -42,57 +47,55 @@ export function ModalTimes() {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody pb={6}>
-          {
-            daysWeeks.map((day) => {
+            {daysWeeks.map((day) => {
               return (
-                <>
-                <HStack key={day}>
-                <Box width={'15%'}>
-                  <FormControl ref={initialRef} id="firstName" isRequired>
-                    <FormLabel>{day}</FormLabel>
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Horario de Abertura</FormLabel>
-                    <Input type="time" />
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Horario de Fechamento</FormLabel>
-                    <Input type="time" />
-                  </FormControl>
-                </Box>
-  
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Tem pausa no expediente?</FormLabel>
-                    <Input type="checkbox" checked />
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Horario de Inicio de Pausa</FormLabel>
-                    <Input type="time" />
-                  </FormControl>
-                </Box>
-  
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Horario de Final da Pausa</FormLabel>
-                    <Input type="time" />
-                  </FormControl>
-                 
-                </Box>
-               
-              </HStack>
-               <Divider margin={'10px'} orientation='horizontal' />
-               </>
-              )
-            })
-          }
-            
+                <div key={day}>
+                  <HStack>
+                    <Box width={"15%"}>
+                      <FormControl ref={initialRef} id="day" isRequired>
+                        <FormLabel>{day}</FormLabel>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl id="firstTime">
+                        <FormLabel>Horario de Abertura</FormLabel>
+                        <Input type="time" />
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl id="lastTime">
+                        <FormLabel>Horario de Fechamento</FormLabel>
+                        <Input type="time" />
+                      </FormControl>
+                    </Box>
+
+                    <Box>
+                      <FormControl id="stop">
+                        <FormLabel>Tem pausa no expediente?</FormLabel>
+                        <Select>
+                          <option>Não</option>
+                          <option>Sim</option>
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl id="firstTimeStop">
+                        <FormLabel>Horario de Inicio de Pausa</FormLabel>
+                        <Input type="time" />
+                      </FormControl>
+                    </Box>
+
+                    <Box>
+                      <FormControl id="lastTimeStop">
+                        <FormLabel>Horario de Final da Pausa</FormLabel>
+                        <Input type="time" />
+                      </FormControl>
+                    </Box>
+                  </HStack>
+                  <Divider margin={"10px"} orientation="horizontal" />
+                </div>
+              );
+            })}
           </ModalBody>
 
           <ModalFooter>

@@ -23,13 +23,16 @@ const colors = {
     800: '#192D4D',
     900: '#0D1626',
   },
+  yeloow: {
+    100: '#A07730'
+  }
 };
 
 // Here is where you define your default styles for components
 const components = {
   Button: {
     defaultProps: {
-      colorScheme: '#f4f4f4f4',
+      colorScheme: '#A07730',
     },
   },
   Checkbox: {
