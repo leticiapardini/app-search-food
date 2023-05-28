@@ -1,0 +1,12 @@
+
+.divSelect {
+  display: flex;
+  gap: 2rem;
+  padding-top: 2rem;
+
+}
+
+.select {
+  border: #391C16 solid 5px;
+  color: 'black';
+}
