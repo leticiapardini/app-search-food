@@ -95,6 +95,7 @@ export function AlertEdit({ id }: { id: string | undefined }) {
           name: ""
 
         })
+        window.location.reload();
       }
       else {
         toast({
@@ -118,7 +119,7 @@ export function AlertEdit({ id }: { id: string | undefined }) {
   };
   return (
     <>
-      <Button colorScheme="red" onClick={onOpen}>
+      <Button colorScheme="gray" onClick={onOpen}>
         Editar
       </Button>
 
@@ -184,19 +185,6 @@ export function AlertEdit({ id }: { id: string | undefined }) {
                     {errors.street.message?.toString()}
                   </p>
                 )}
-                {/* <FormLabel marginTop={'15px'}>Numero</FormLabel>
-                <Input
-                  {...register("number")}
-                  id="number"
-                  name="number"
-                  marginTop={"10px"}
-                  type="number"
-                />
-                {errors.number && (
-                  <p style={{ color: "red" }}>
-                    {errors.number.message?.toString()}
-                  </p>
-                )} */}
                 <FormLabel marginTop={'15px'}>Cidade</FormLabel>
                 <Input
                   {...register("city")}
@@ -266,11 +254,3 @@ export function AlertEdit({ id }: { id: string | undefined }) {
     </>
   );
 }
-function isEmptyArray(value: any) {
-  throw new Error("Function not implemented.");
-}
-
-function isEmptyObject(value: any) {
-  throw new Error("Function not implemented.");
-}
-

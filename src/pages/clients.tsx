@@ -1,7 +1,9 @@
-
+import { SearchRestaurants } from "../components/searchRestaurants";
 
 export const Clients = () => {
   return (
-    <div>Pagina Clients</div>
-  )
-}
+    <div>
+      <SearchRestaurants />
+    </div>
+  );
+};

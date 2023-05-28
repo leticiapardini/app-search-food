@@ -1,10 +1,9 @@
-import { CardRestaurant } from "../components/cardRestaurants"
-
+import { CardRestaurant } from "../components/cardRestaurants";
 
 export const Restaurant = () => {
   return (
     <div>
-      <CardRestaurant/>
+      <CardRestaurant />
     </div>
-  )
-}
+  );
+};

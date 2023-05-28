@@ -10,7 +10,7 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -44,57 +44,59 @@ export default function FormRestaurants() {
   const handleSubmitRestaurant: SubmitHandler<FieldValues> = async (
     response
   ) => {
-   try {
-    console.log(response);
-    const data = await apiService.createRestaurant({
-      cellphone: response.cellphone,
-      city: response.city,
-      name: response.name,
-      number: response.number,
-      password: response.password,
-      street: response.street,
-      type: response.type,
-      link: response.link,
-      socialMidea: response.midias
-    });
-    if (data) {
+    try {
+      console.log(response);
+      const data = await apiService.createRestaurant({
+        cellphone: response.cellphone,
+        city: response.city,
+        name: response.name,
+        number: response.number,
+        password: response.password,
+        street: response.street,
+        type: response.type,
+        link: response.link,
+        socialMidea: response.midias,
+      });
+      if (data) {
+        toast({
+          title: "Mensagem.",
+          description:
+            "Seu restaurante foi Criado com sucesso!!. Lembre-se de guardar sua senha, vc precisará dela para fazer outras modificações",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+        reset({
+          password: "",
+          name: "",
+          number: "",
+          street: "",
+          cellphone: "",
+          city: "",
+          type: "",
+          link: "",
+          midias: "",
+        });
+      } else {
+        toast({
+          title: "Mensagem.",
+          description:
+            "Não foi possivel cadastrar seu restaurante, verifique os dados.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
       toast({
         title: "Mensagem.",
         description:
-          "Seu restaurante foi Criado com sucesso!!. Lembre-se de guardar sua senha, vc precisará dela para fazer outras modificações",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-      });
-      reset({
-        password: "",
-        name: "",
-        number: "",
-        street: "",
-        cellphone: "",
-        city: "",
-        type: "",
-        link: "",
-        midias: "",
-      });
-    }else {
-      toast({
-        title: "Mensagem.",
-        description: "Não foi possivel cadastrar seu restaurante, verifique os dados.",
+          "Não foi possivel cadastrar seu restaurante, verifique os dados.",
         status: "error",
         duration: 2000,
         isClosable: true,
       });
     }
-   } catch (error) {
-    toast({
-      title: "Mensagem.",
-      description: "Não foi possivel cadastrar seu restaurante, verifique os dados.",
-      status: "error",
-      duration: 2000,
-      isClosable: true,
-    });
-   }
   };
   return (
     <Flex

@@ -39,7 +39,6 @@ export function AlertDelete({ id }: { id: string | undefined }) {
   ) => {
     try {
       onClose();
-      console.log(response.password);
       const data = await apiService.deleteRestaurants(id, response.password);
       if (data) {
         toast({
@@ -50,10 +49,10 @@ export function AlertDelete({ id }: { id: string | undefined }) {
           isClosable: true,
         });
         reset({
-          password : ""
-        })
-      }
-      else {
+          password: "",
+        });
+        window.location.reload();
+      } else {
         toast({
           title: "Mensagem.",
           description: "Não foi possivel deletar seu restaurante",

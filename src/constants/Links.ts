@@ -1,12 +1,11 @@
-
 export const Hrefs = {
-  Home : '/',
+  Home: "/",
   Restaurantes: "/restaurants",
-  Clientes: "/clients"
-}
+  Clientes: "/clients",
+};
 
 export const Links = {
-  Home : 'Home',
+  Home: "Home",
   Restaurantes: "Restaurantes",
-  Clientes: "Clientes"
-}
+  Clientes: "Clientes",
+};

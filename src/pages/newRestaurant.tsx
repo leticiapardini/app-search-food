@@ -1,10 +1,9 @@
-import FormRestaurants from "../components/FormRestaurants"
-
+import FormRestaurants from "../components/FormRestaurants";
 
 export const NewRestaurant = () => {
   return (
     <div>
-      <FormRestaurants/>
+      <FormRestaurants />
     </div>
-  )
-}
+  );
+};

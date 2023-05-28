@@ -8,11 +8,11 @@ export const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/clients" element={<Clients/>} />
-        <Route path="/restaurants" element={<Restaurant/>} />
-        <Route path="/newRestaurants" element={<NewRestaurant/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/restaurants" element={<Restaurant />} />
+        <Route path="/newRestaurants" element={<NewRestaurant />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};

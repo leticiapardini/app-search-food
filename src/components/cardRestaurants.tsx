@@ -6,7 +6,6 @@ import {
   SimpleGrid,
   Text,
   CardFooter,
-  Button,
   Link,
   Alert,
   AlertIcon,
@@ -14,7 +13,6 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { ModalTimes } from "./FormModalTimes";
-import { AddIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { ApiService } from "../service/api";
 import { createRestaurant } from "../types/restaurantsTypes";
@@ -42,20 +40,20 @@ export const CardRestaurant = () => {
   }, []);
 
   return (
-    <div style={{ background: "#786b3f", paddingTop: "10px" }}>
+    <div style={{ background: "#1A202C", paddingTop: "10px" }}>
       {restaurants.length > 0 ? (
         restaurants.map((restaurant) => {
           return (
             <div key={restaurant.id}>
               <Link
                 background={"#391C16"}
-                fontSize={"1.5rem"}
-                padding={"0.2rem"}
-                margin={"0.6rem"}
+                fontSize={"1rem"}
+                padding={"0.3rem"}
+                margin={"0.7rem"}
                 borderRadius={"6px"}
                 href="/newRestaurants"
               >
-                <AddIcon />
+                Cadastrar
               </Link>
               <SimpleGrid
                 spacing={3}
@@ -89,29 +87,35 @@ export const CardRestaurant = () => {
                   <div>
                     {timeRestaurant.length > 0 ? (
                       timeRestaurant.map((time) => {
-                        console.log(time);
-                        return time.restaurant.id === restaurant.id ? (
-                          <Text>{time.start_time}</Text>
-                        ) : (
-                          <Text background={"#EBBF26"} color={"black"}>
-                            ALERTA!! Seu restaurante ainda não possui horarios
-                            cadastrados,
-                            <ModalTimes /> para cadastrar, so assim ele
-                            aparecerá para os clientes
-                          </Text>
+                        return (
+                          time.restaurant.id !== restaurant.id && (
+                            <Text background={"#EBBF26"} color={"black"}>
+                              ALERTA!! Seu restaurante ainda não possui horarios
+                              cadastrados,
+                              <ModalTimes id={restaurant.id} /> para cadastrar,
+                              so assim ele aparecerá para os clientes
+                            </Text>
+                          )
                         );
                       })
                     ) : (
-                      <Text background={"#EBBF26"} color={"black"}>
+                      <Text
+                        background={"#a98919"}
+                        padding={"5px"}
+                        fontSize={"12px"}
+                        color={"black"}
+                      >
                         ALERTA!! Seu restaurante ainda não possui horarios
-                        cadastrados,
-                        <ModalTimes /> para cadastrar, so assim ele aparecerá
-                        para os clientes
+                        cadastrados, clique no botão abaixo para cadastrar, so
+                        assim ele aparecerá para os clientes
+                        <div>
+                          <ModalTimes id={restaurant.id} />
+                        </div>
                       </Text>
                     )}
                   </div>
-                  <CardFooter justifyContent={"space-around"}>
-                    <AlertEdit id={restaurant.id}/>
+                  <CardFooter gap={"2rem"} justifyContent={"space-around"}>
+                    <AlertEdit id={restaurant.id} />
                     <AlertDelete id={restaurant.id} />
                   </CardFooter>
                 </Card>
@@ -131,13 +135,14 @@ export const CardRestaurant = () => {
         <>
           <Link
             background={"#391C16"}
-            fontSize={"1.5rem"}
+            fontSize={"1.1rem"}
             padding={"0.2rem"}
-            margin={"0.6rem"}
+            margin={"2rem"}
+            marginBottom={"5rem"}
             borderRadius={"6px"}
             href="/newRestaurants"
           >
-            <AddIcon />
+            Cadastrar
           </Link>
           <Alert
             status="info"
@@ -147,6 +152,7 @@ export const CardRestaurant = () => {
             justifyContent="center"
             textAlign="center"
             height="200px"
+            marginTop={"2rem"}
           >
             <AlertIcon boxSize="40px" mr={0} />
             <AlertTitle mt={4} mb={1} fontSize="lg">
