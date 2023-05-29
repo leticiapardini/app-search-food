@@ -39,12 +39,10 @@ export const SearchRestaurants = () => {
   useEffect(() => {
     const getAllRestaurants = async () => {
       const data = await apiService.getAllRestaurants();
-      console.log(data);
       setRestaurants(data.data.data);
     };
     const getAllTimes = async () => {
       const data = await apiService.getAllTimes();
-      console.log(data);
       setTimes(data.data.data);
     };
     getAllRestaurants();
@@ -70,7 +68,6 @@ export const SearchRestaurants = () => {
     const hoursCloseHours = closeHours.hours();
     const hoursCloseMinutis = closeHours.minutes();
 
-    console.log(closeHours);
     return (
       <div>
         {response?.time >= timesRestaurantsForDays[0].start_time &&

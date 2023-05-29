@@ -45,7 +45,6 @@ export default function FormRestaurants() {
     response
   ) => {
     try {
-      console.log(response);
       const data = await apiService.createRestaurant({
         cellphone: response.cellphone,
         city: response.city,

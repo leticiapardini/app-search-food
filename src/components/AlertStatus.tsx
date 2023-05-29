@@ -1,7 +1,6 @@
 import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 
 export const AlertStatus = ({ message }: { message: string }) => {
-  console.log("message");
   return (
     <Alert
       status="info"

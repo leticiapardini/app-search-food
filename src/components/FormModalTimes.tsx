@@ -14,6 +14,7 @@ import {
   Divider,
   Select,
   useToast,
+  Text
 } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRef, useState } from "react";
@@ -97,7 +98,6 @@ export function ModalTimes({ id }: { id: string | undefined }) {
         start_time_interval: response.end_time_interval,
       });
       if (data) {
-        console.log(data);
         setDays((prevTimes) => prevTimes.filter((day) => day !== response.day));
         toast({
           title: "Mensagem.",
@@ -159,7 +159,7 @@ export function ModalTimes({ id }: { id: string | undefined }) {
                 <FormLabel>Dia da Semana</FormLabel>
                 <Select id="day" {...register("day")}>
                   {days.map((day) => {
-                    return <option>{day}</option>;
+                    return <option key={day}>{day}</option>;
                   })}
                 </Select>
                 <div style={{ color: "red" }}>
@@ -239,7 +239,9 @@ export function ModalTimes({ id }: { id: string | undefined }) {
               </FormControl>
             </Box>
           </HStack>
-
+            <Text>
+              Obs: Caso seu restaurante não abra nesse dia, coloque o horario como 00:00
+            </Text>
           <Button type="submit" marginTop={"15px"} colorScheme="gray" mr={3}>
             {`Cadastrar Horario`}
           </Button>

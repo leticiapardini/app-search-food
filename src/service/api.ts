@@ -6,12 +6,11 @@ export class ApiService {
   axios: any;
   constructor() {
     this.axios = axios.create({
-      baseURL: "http://3.16.22.129:8080/"
+      baseURL: "http://18.117.157.167:8080/"
     });
   }
 
   async createRestaurant(dados: createRestaurant) {
-    console.log(dados, "dados");
     const customConfig = {
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -23,7 +22,6 @@ export class ApiService {
       JSON.stringify(dados),
       customConfig
     );
-    console.log(ret);
     return ret;
   }
 
@@ -33,7 +31,6 @@ export class ApiService {
   }
 
   async updateRestaurants(dados: updateRestaurant, id: string | undefined) {
-    console.log(dados);
     const customConfig = {
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -49,8 +46,6 @@ export class ApiService {
   }
 
   async deleteRestaurants(id: string | undefined, password: any) {
-    console.log(id);
-    console.log(password, "password api");
     const customConfig = {
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -66,7 +61,6 @@ export class ApiService {
       { data: postData },
       customConfig
     );
-    console.log(ret);
     return ret;
   }
 
@@ -76,7 +70,6 @@ export class ApiService {
   }
 
   async createTimes(dados: createTimes) {
-    console.log(dados);
     const customConfig = {
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -88,7 +81,6 @@ export class ApiService {
       JSON.stringify(dados),
       customConfig
     );
-    console.log(ret);
     return ret;
   }
 
