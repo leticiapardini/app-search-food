@@ -8,7 +8,6 @@ export const NavLink = ({
   children: ReactNode;
   href: string;
 }) => {
-  console.log(children);
   return (
     <Link
       px={2}

@@ -71,8 +71,6 @@ export function AlertEdit({ id }: { id: string | undefined }) {
       onClose();
       
      const newObj  = removePropriedadesVazias(response)
-     console.log(newObj)
-      console.log(response.password);
       const data = await apiService.updateRestaurants({
        ...newObj
       }, id);
